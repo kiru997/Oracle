@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHITIETSP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="IDSP" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="IDGB" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="IDMAU" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="ANHBIA" Type="nvarchar2" MaxLength="1000" Nullable="false" />
+    <Property Name="ANHFULL" Type="varchar2" MaxLength="1000" Nullable="false" />
+    <Property Name="THONGTIN" Type="nvarchar2" MaxLength="1000" Nullable="false" />
+    <Property Name="GIA" Type="number" Precision="12" Scale="0" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="SOLUONGDAT" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="ANHIEN" Type="number" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="SALE" Type="number" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="NGAY" Type="date" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATUS" Type="number" Precision="1" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMMENTS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COMMNET" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+    <Property Name="ROOT" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="IDCMTROOT" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="IDUSER" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUSER" Type="number" Precision="10" Scale="0" />
+    <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="SDT" Type="number" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+    <Property Name="IDSANPHAM" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="IDDONHANG" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TONGTIEN" Type="number" Precision="20" Scale="0" Nullable="false" />
+    <Property Name="STASTUS" Type="number" Precision="10" Scale="0" />
+  </EntityType>
+  <EntityType Name="DUNGLUONG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GB" Type="number" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HANG" Type="varchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOAI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOAI" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MAU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAU" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="IDHANG" Type="number" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="THONGSO" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TAIKHOAN" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="MATKHAU" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+    <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="SDT" Type="number" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="QUYEN" Type="number" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="STATUS" Type="number" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="AVATAR" Type="nvarchar2" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CHITIETSP" EntityType="Self.CHITIETSP" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="COMMENTS" EntityType="Self.COMMENTS" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="DUNGLUONG" EntityType="Self.DUNGLUONG" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="HANG" EntityType="Self.HANG" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="LOAI" EntityType="Self.LOAI" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="MAU" EntityType="Self.MAU" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="HR" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

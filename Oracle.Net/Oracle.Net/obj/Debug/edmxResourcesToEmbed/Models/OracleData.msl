@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CHITIETSPs">
+      <EntityTypeMapping TypeName="Model.CHITIETSP">
+        <MappingFragment StoreEntitySet="CHITIETSP">
+          <ScalarProperty Name="IDSP" ColumnName="IDSP" />
+          <ScalarProperty Name="IDGB" ColumnName="IDGB" />
+          <ScalarProperty Name="IDMAU" ColumnName="IDMAU" />
+          <ScalarProperty Name="ANHBIA" ColumnName="ANHBIA" />
+          <ScalarProperty Name="ANHFULL" ColumnName="ANHFULL" />
+          <ScalarProperty Name="THONGTIN" ColumnName="THONGTIN" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="SOLUONGDAT" ColumnName="SOLUONGDAT" />
+          <ScalarProperty Name="ANHIEN" ColumnName="ANHIEN" />
+          <ScalarProperty Name="SALE" ColumnName="SALE" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMENTS">
+      <EntityTypeMapping TypeName="Model.COMMENT">
+        <MappingFragment StoreEntitySet="COMMENTS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COMMNET" ColumnName="COMMNET" />
+          <ScalarProperty Name="ROOT" ColumnName="ROOT" />
+          <ScalarProperty Name="IDCMTROOT" ColumnName="IDCMTROOT" />
+          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="Model.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
+          <ScalarProperty Name="IDDONHANG" ColumnName="IDDONHANG" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="STASTUS" ColumnName="STASTUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DUNGLUONGs">
+      <EntityTypeMapping TypeName="Model.DUNGLUONG">
+        <MappingFragment StoreEntitySet="DUNGLUONG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GB" ColumnName="GB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HANGs">
+      <EntityTypeMapping TypeName="Model.HANG">
+        <MappingFragment StoreEntitySet="HANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HANG1" ColumnName="HANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIs">
+      <EntityTypeMapping TypeName="Model.LOAI">
+        <MappingFragment StoreEntitySet="LOAI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LOAI1" ColumnName="LOAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAUs">
+      <EntityTypeMapping TypeName="Model.MAU">
+        <MappingFragment StoreEntitySet="MAU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MAU1" ColumnName="MAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="Model.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="IDHANG" ColumnName="IDHANG" />
+          <ScalarProperty Name="THONGSO" ColumnName="THONGSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="Model.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TAIKHOAN1" ColumnName="TAIKHOAN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="QUYEN" ColumnName="QUYEN" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHITIETSP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="IDSP" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IDGB" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IDMAU" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ANHBIA" Type="nvarchar2" MaxLength="1000" Nullable="false" />
+          <Property Name="ANHFULL" Type="varchar2" MaxLength="1000" Nullable="false" />
+          <Property Name="THONGTIN" Type="nvarchar2" MaxLength="1000" Nullable="false" />
+          <Property Name="GIA" Type="number" Precision="12" Scale="0" Nullable="false" />
+          <Property Name="SOLUONG" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SOLUONGDAT" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ANHIEN" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="SALE" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NGAY" Type="date" Nullable="false" />
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS" Type="number" Precision="1" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMMNET" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+          <Property Name="ROOT" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IDCMTROOT" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IDUSER" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DONHANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUSER" Type="number" Precision="10" Scale="0" />
+          <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+          <Property Name="SDT" Type="number" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar2" MaxLength="100" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+          <Property Name="IDSANPHAM" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IDDONHANG" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SOLUONG" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="TONGTIEN" Type="number" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="STASTUS" Type="number" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="DUNGLUONG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GB" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HANG" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOAI" Type="nvarchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MAU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAU" Type="nvarchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+          <Property Name="IDHANG" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="THONGSO" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TAIKHOAN" Type="nvarchar2" MaxLength="50" Nullable="false" />
+          <Property Name="MATKHAU" Type="nvarchar2" MaxLength="2000" Nullable="false" />
+          <Property Name="TEN" Type="nvarchar2" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar2" MaxLength="100" Nullable="false" />
+          <Property Name="SDT" Type="number" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="QUYEN" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="STATUS" Type="number" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="AVATAR" Type="nvarchar2" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CHITIETSP" EntityType="Self.CHITIETSP" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="COMMENTS" EntityType="Self.COMMENTS" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="DUNGLUONG" EntityType="Self.DUNGLUONG" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="HANG" EntityType="Self.HANG" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="LOAI" EntityType="Self.LOAI" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="MAU" EntityType="Self.MAU" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="HR" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHITIETSP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="IDSP" Type="Int32" Nullable="false" />
+          <Property Name="IDGB" Type="Int32" Nullable="false" />
+          <Property Name="IDMAU" Type="Int32" Nullable="false" />
+          <Property Name="ANHBIA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ANHFULL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="THONGTIN" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GIA" Type="Int64" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONGDAT" Type="Int32" Nullable="false" />
+          <Property Name="ANHIEN" Type="Boolean" Nullable="false" />
+          <Property Name="SALE" Type="Byte" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMMNET" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ROOT" Type="Int32" Nullable="false" />
+          <Property Name="IDCMTROOT" Type="Int32" Nullable="false" />
+          <Property Name="IDUSER" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DONHANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUSER" Type="Int32" />
+          <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="Int64" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDSANPHAM" Type="Int32" Nullable="false" />
+          <Property Name="IDDONHANG" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <Property Name="TONGTIEN" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+          <Property Name="STASTUS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DUNGLUONG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GB" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HANG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HANG1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOAI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOAI1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MAU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAU1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDHANG" Type="Int32" Nullable="false" />
+          <Property Name="THONGSO" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TAIKHOAN1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="Int64" Nullable="false" />
+          <Property Name="QUYEN" Type="Boolean" Nullable="false" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="AVATAR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHITIETSPs" EntityType="Self.CHITIETSP" />
+          <EntitySet Name="COMMENTS" EntityType="Self.COMMENT" />
+          <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
+          <EntitySet Name="DUNGLUONGs" EntityType="Self.DUNGLUONG" />
+          <EntitySet Name="HANGs" EntityType="Self.HANG" />
+          <EntitySet Name="LOAIs" EntityType="Self.LOAI" />
+          <EntitySet Name="MAUs" EntityType="Self.MAU" />
+          <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CHITIETSPs">
+            <EntityTypeMapping TypeName="Model.CHITIETSP">
+              <MappingFragment StoreEntitySet="CHITIETSP">
+                <ScalarProperty Name="IDSP" ColumnName="IDSP" />
+                <ScalarProperty Name="IDGB" ColumnName="IDGB" />
+                <ScalarProperty Name="IDMAU" ColumnName="IDMAU" />
+                <ScalarProperty Name="ANHBIA" ColumnName="ANHBIA" />
+                <ScalarProperty Name="ANHFULL" ColumnName="ANHFULL" />
+                <ScalarProperty Name="THONGTIN" ColumnName="THONGTIN" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="SOLUONGDAT" ColumnName="SOLUONGDAT" />
+                <ScalarProperty Name="ANHIEN" ColumnName="ANHIEN" />
+                <ScalarProperty Name="SALE" ColumnName="SALE" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMENTS">
+            <EntityTypeMapping TypeName="Model.COMMENT">
+              <MappingFragment StoreEntitySet="COMMENTS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COMMNET" ColumnName="COMMNET" />
+                <ScalarProperty Name="ROOT" ColumnName="ROOT" />
+                <ScalarProperty Name="IDCMTROOT" ColumnName="IDCMTROOT" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DONHANGs">
+            <EntityTypeMapping TypeName="Model.DONHANG">
+              <MappingFragment StoreEntitySet="DONHANG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="IDSANPHAM" ColumnName="IDSANPHAM" />
+                <ScalarProperty Name="IDDONHANG" ColumnName="IDDONHANG" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="STASTUS" ColumnName="STASTUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DUNGLUONGs">
+            <EntityTypeMapping TypeName="Model.DUNGLUONG">
+              <MappingFragment StoreEntitySet="DUNGLUONG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GB" ColumnName="GB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HANGs">
+            <EntityTypeMapping TypeName="Model.HANG">
+              <MappingFragment StoreEntitySet="HANG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HANG1" ColumnName="HANG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIs">
+            <EntityTypeMapping TypeName="Model.LOAI">
+              <MappingFragment StoreEntitySet="LOAI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LOAI1" ColumnName="LOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAUs">
+            <EntityTypeMapping TypeName="Model.MAU">
+              <MappingFragment StoreEntitySet="MAU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAU1" ColumnName="MAU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SANPHAMs">
+            <EntityTypeMapping TypeName="Model.SANPHAM">
+              <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="IDHANG" ColumnName="IDHANG" />
+                <ScalarProperty Name="THONGSO" ColumnName="THONGSO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="Model.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOAN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TAIKHOAN1" ColumnName="TAIKHOAN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="QUYEN" ColumnName="QUYEN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

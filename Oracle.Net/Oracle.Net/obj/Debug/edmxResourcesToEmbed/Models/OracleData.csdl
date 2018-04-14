@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHITIETSP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="IDSP" Type="Int32" Nullable="false" />
+    <Property Name="IDGB" Type="Int32" Nullable="false" />
+    <Property Name="IDMAU" Type="Int32" Nullable="false" />
+    <Property Name="ANHBIA" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ANHFULL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="THONGTIN" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GIA" Type="Int64" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONGDAT" Type="Int32" Nullable="false" />
+    <Property Name="ANHIEN" Type="Boolean" Nullable="false" />
+    <Property Name="SALE" Type="Byte" Nullable="false" />
+    <Property Name="NGAY" Type="DateTime" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COMMNET" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ROOT" Type="Int32" Nullable="false" />
+    <Property Name="IDCMTROOT" Type="Int32" Nullable="false" />
+    <Property Name="IDUSER" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUSER" Type="Int32" />
+    <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="Int64" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDSANPHAM" Type="Int32" Nullable="false" />
+    <Property Name="IDDONHANG" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="TONGTIEN" Type="Decimal" Precision="20" Scale="0" Nullable="false" />
+    <Property Name="STASTUS" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DUNGLUONG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GB" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HANG1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOAI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOAI1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MAU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAU1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDHANG" Type="Int32" Nullable="false" />
+    <Property Name="THONGSO" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TAIKHOAN1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="Int64" Nullable="false" />
+    <Property Name="QUYEN" Type="Boolean" Nullable="false" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="AVATAR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHITIETSPs" EntityType="Self.CHITIETSP" />
+    <EntitySet Name="COMMENTS" EntityType="Self.COMMENT" />
+    <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
+    <EntitySet Name="DUNGLUONGs" EntityType="Self.DUNGLUONG" />
+    <EntitySet Name="HANGs" EntityType="Self.HANG" />
+    <EntitySet Name="LOAIs" EntityType="Self.LOAI" />
+    <EntitySet Name="MAUs" EntityType="Self.MAU" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+  </EntityContainer>
+</Schema>
