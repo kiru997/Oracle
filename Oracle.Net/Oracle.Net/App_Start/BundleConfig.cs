@@ -8,6 +8,16 @@ namespace Oracle.Net
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/Script/Bundles")
+                .Include("~/dist/inline.*",
+                "~/dist/polyfills.*",
+                "~/dist/scripts.*",
+                "~/dist/vendor.*",
+                "~/dist/main.*"));
+
+            bundles.Add(new StyleBundle("~/Content/Styles")
+                .Include("~/bundles/styles.*"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
