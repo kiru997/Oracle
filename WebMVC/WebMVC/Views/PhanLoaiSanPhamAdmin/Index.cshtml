@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/Adminlayout.cshtml";
+}
+@section Scripts{
+
+
+
+    <script src="~/Container/AdminJS/jquery.min.js"></script>
+    <script src="~/Container/AdminJS/bootbox.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Container/AdminJS/jquery.twbsPagination.min.js"></script>
+    <script src="~/Container/AdminJS/controller/phanloaispadmin.js"></script>
+    
+
+    <script>
+        $('.btn-confirm').click(function () {
+            phanloaispadmin.save(listcofig.id, listcofig.flag, listcofig.value);
+            
+        });
+        $('[name=btnadd]').click(function () {
+           
+            $("#modal_form").modal('show');
+
+        });
+        $('#btnSave').click(function () {
+            phanloaispadmin.add($("#addselect").val(), $("#giatri").val());
+            
+
+        });
+        $("#btndeleteconfirm").click(function () {
+            phanloaispadmin.DeleteEmployee(listcofig.iddelete, listcofig.flagdelete);
+            listcofig.iddelete = null;
+            listcofig.flagdelete = null;
+        });
+        $("#btncanceldelete").click(function () {
+            $("#loaderdelete").hide();
+        });
+        
+
+    </script>
+}
+<div class="header">
+    <div>
+        <button name="btnadd" style="border-radius:8px" class="btn btn-default col-md-1">Add</button>
+    </div>
+</div>
+
+
+
+<div style="min-height:100px">
+
+</div>
+<div class="container">
+    <div id="thanhcong" class="alert alert-success" style="display: none;">Success</div>
+    <div id="thatbai" class="alert alert-danger" style="display: none;">Failure</div>
+    <div id="tuchoi" class="alert alert-danger" style="display: none;">Access is denied</div>
+    
+    <div class="body-content">
+        <div style="float:left">
+
+            <table id="table" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <tr>
+                    <th>Id</th>
+                    <th>Loại</th>
+                    <th>Ation</th>
+                </tr>
+                <tbody id="tblloai"></tbody>
+            </table>
+
+
+        </div>
+        <div style="float:left;padding-left:5%">
+
+            <table id="table" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <tr>
+                    <th>Id</th>
+                    <th>Hãng</th>
+                    <th>Ation</th>
+                </tr>
+                <tbody id="tblhang"></tbody>
+            </table>
+
+
+        </div>
+        <div style="float:right">
+
+            <table id="table" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                <tr>
+                    <th>Id</th>
+                    <th>Màu</th>
+                    <th>Ation</th>
+                </tr>
+                <tbody id="tblmau"></tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modeldelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Detete</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ? You want to delete this. </h4>
+
+                <div style="text-align:center;display:none" id="loaderdelete">
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="150" />
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btncanceldelete" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="btndeleteconfirm" class="btn btn-success btn-confirm">Confirm</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Bootstrap modal end -->
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modelchange">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Save</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ? You want to change this. </h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="150" />
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button name="btnsave" class="btn btn-success btn-confirm">Confirm</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Bootstrap modal end -->
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Book Form</h3>
+                <div style="text-align:center;display:none" id="addload">
+
+
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="100" />
+
+                </div>
+            </div>
+
+            <div class="modal-body form">
+                <form action="#" id="form" class="form-horizontal">
+                    <input type="hidden" value="" name="book_id" />
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Select</label>
+                            <div class="col-md-3">
+                                <select style="border-radius:8px" id="addselect" name="dungluong" class="form-control">
+                                    <option value="mau">Màu</option>
+                                    <option value="loai">Loại</option>
+                                    <option value="hang">Hãng</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Giá Trị</label>
+                            <div class="col-md-4">
+                                <input required id="giatri" style="border-radius:4px" name="book_isbn" class="form-control" type="text">
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnSave" class="btn btn-success btn-save">Save</button>
+                <button  type="button" class="btn btn-danger btn-cancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+

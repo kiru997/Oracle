@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="AppleEntities">
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="Model.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+          <ScalarProperty Name="IDSP" ColumnName="IDSP" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="STASTUS" ColumnName="STASTUS" />
+          <ScalarProperty Name="IDSHIP" ColumnName="IDSHIP" />
+          <ScalarProperty Name="NGAYDAT" ColumnName="NGAYDAT" />
+          <ScalarProperty Name="THANHTOAN" ColumnName="THANHTOAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HANGs">
+      <EntityTypeMapping TypeName="Model.HANG">
+        <MappingFragment StoreEntitySet="HANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HANGSX" ColumnName="HANGSX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIs">
+      <EntityTypeMapping TypeName="Model.LOAI">
+        <MappingFragment StoreEntitySet="LOAI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LOAISP" ColumnName="LOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAUs">
+      <EntityTypeMapping TypeName="Model.MAU">
+        <MappingFragment StoreEntitySet="MAU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MAUSP" ColumnName="MAUSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEMBERs">
+      <EntityTypeMapping TypeName="Model.MEMBER">
+        <MappingFragment StoreEntitySet="MEMBER">
+          <ScalarProperty Name="TAIKHOAN" ColumnName="TAIKHOAN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="TEN" ColumnName="TEN" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ANH" ColumnName="ANH" />
+          <ScalarProperty Name="RESETPASS" ColumnName="RESETPASS" />
+          <ScalarProperty Name="QUYEN" ColumnName="QUYEN" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="Model.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="LOAI" ColumnName="LOAI" />
+          <ScalarProperty Name="HANG" ColumnName="HANG" />
+          <ScalarProperty Name="ANHBIA" ColumnName="ANHBIA" />
+          <ScalarProperty Name="ANHFULL" ColumnName="ANHFULL" />
+          <ScalarProperty Name="THONGTIN" ColumnName="THONGTIN" />
+          <ScalarProperty Name="THONGSO" ColumnName="THONGSO" />
+          <ScalarProperty Name="MAU" ColumnName="MAU" />
+          <ScalarProperty Name="DUNGLUONG" ColumnName="DUNGLUONG" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="SOLUONGDAT" ColumnName="SOLUONGDAT" />
+          <ScalarProperty Name="ANHIEN" ColumnName="ANHIEN" />
+          <ScalarProperty Name="SALE" ColumnName="SALE" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SHIPs">
+      <EntityTypeMapping TypeName="Model.SHIP">
+        <MappingFragment StoreEntitySet="SHIP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

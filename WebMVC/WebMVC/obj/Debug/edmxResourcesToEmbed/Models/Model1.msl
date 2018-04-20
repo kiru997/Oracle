@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppleModelStoreContainer" CdmEntityContainer="AppleEntities">
+    <EntitySetMapping Name="Donhangs">
+      <EntityTypeMapping TypeName="AppleModel.Donhang">
+        <MappingFragment StoreEntitySet="Donhang">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="idsp" ColumnName="idsp" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="thanhtoan" ColumnName="thanhtoan" />
+          <ScalarProperty Name="idship" ColumnName="idship" />
+          <ScalarProperty Name="tongtien" ColumnName="tongtien" />
+          <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hangs">
+      <EntityTypeMapping TypeName="AppleModel.hang">
+        <MappingFragment StoreEntitySet="hang">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hangsx" ColumnName="hangsx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loais">
+      <EntityTypeMapping TypeName="AppleModel.loai">
+        <MappingFragment StoreEntitySet="loai">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="loaisp" ColumnName="loaisp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maus">
+      <EntityTypeMapping TypeName="AppleModel.mau">
+        <MappingFragment StoreEntitySet="mau">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mausp" ColumnName="mausp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="AppleModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="taikhoan" ColumnName="taikhoan" />
+          <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="resetpass" ColumnName="resetpass" />
+          <ScalarProperty Name="quyen" ColumnName="quyen" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sanphams">
+      <EntityTypeMapping TypeName="AppleModel.sanpham">
+        <MappingFragment StoreEntitySet="sanpham">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tensp" ColumnName="tensp" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+          <ScalarProperty Name="hang" ColumnName="hang" />
+          <ScalarProperty Name="anhbia" ColumnName="anhbia" />
+          <ScalarProperty Name="anhfull" ColumnName="anhfull" />
+          <ScalarProperty Name="thongtin" ColumnName="thongtin" />
+          <ScalarProperty Name="thongso" ColumnName="thongso" />
+          <ScalarProperty Name="mau" ColumnName="mau" />
+          <ScalarProperty Name="dungluong" ColumnName="dungluong" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="soluong" ColumnName="soluong" />
+          <ScalarProperty Name="soluongdat" ColumnName="soluongdat" />
+          <ScalarProperty Name="anhien" ColumnName="anhien" />
+          <ScalarProperty Name="sale" ColumnName="sale" />
+          <ScalarProperty Name="tinhtrang" ColumnName="tinhtrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ships">
+      <EntityTypeMapping TypeName="AppleModel.ship">
+        <MappingFragment StoreEntitySet="ship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AppleModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

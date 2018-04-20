@@ -1,0 +1,425 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/Adminlayout.cshtml";
+}
+
+@section Scripts{
+
+
+
+    <script src="~/Container/AdminJS/jquery.min.js"></script>
+    <script src="~/Container/AdminJS/bootbox.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Container/AdminJS/jquery.twbsPagination.min.js"></script>
+    <script src="~/Container/AdminJS/controller/listsanphamcontroller.js"></script>
+    
+
+    <script>
+        
+        
+        $('.btn-confirm').click(function () {
+            var iddelete = $("[name=btnDelete]").attr('id');
+           listsanphamcontroller.DeleteEmployee(iddelete);
+        });
+        $("#add").click(function () {
+            listcofig.flag = true;
+            listsanphamcontroller.resetmodelinput();
+            $('#modal_form').modal('show');
+        });
+        $('.btn-save').click(function () {
+            $("#addload").show();
+            listsanphamcontroller.postimage();
+            listsanphamcontroller.savedata(listcofig.idedit,listcofig.flag);
+            listsanphamcontroller.resetmodelinput();
+            listcofig.idedit = null;
+            listcofig.anhchinh = "";
+            listcofig.anhfull = "";
+            
+            
+            
+        });
+        
+        $('.btn-cancel').click(function () {
+            $("#addload").hide();
+            $("#loadchinh").empty();
+            $("#loadchinh").hide();
+            $("#showchinh").remove();
+            $("#loadfull").empty();
+            $("#showchinh").remove();
+            $("#showfull").remove();
+            $("#loadfull").hide();
+            
+
+            
+        });
+        $("#btnBooking").click(function () {
+            listsanphamcontroller.addbook(listcofig.idbook);
+
+
+        });
+        $("#btncancelbook").click(function () {
+            listsanphamcontroller.resetbook();
+        });
+        
+        
+         
+        function previewImage(input, idoutput, id) {
+           
+            
+            $("#" + idoutput).html("");
+            var output = document.getElementById(idoutput);
+            if (id == 0) {
+                maxhinh = input.files.length;
+                
+                listcofig.anhfull = "";
+                
+            }
+            if (id == 1) {
+                maxhinh = 1;
+                listcofig.anhchinh = "";
+                listcofig.anhchinh = input.files[0].name;
+
+            }
+            
+            for (i = 0; i < maxhinh; ++i) {
+                var file = input.files[i];
+               
+
+                if (id == 0) {
+
+                   
+                    if (i < maxhinh - 1)
+                        listcofig.anhfull += file.name + ",";
+                    if (i == maxhinh - 1)
+                        listcofig.anhfull += file.name;
+                }
+                
+                
+            }
+           
+            
+            
+            for (i = 0; i < maxhinh; i++) {
+                var file = input.files[i];
+               
+                //Only pics
+                if (!file.type.match('image')) return;
+
+                var picReader = new FileReader();
+                picReader.onload = function (e) {
+                    var picFile = e.target;
+                    
+                    var div = document.createElement("div");
+                    div.style.float = 'left';
+                    if (i == input.files.length - 1)
+                        div.innerHTML = "<img id='imagechinh' width='125' height='145' src='" + picFile.result + "'" + "title='" + picFile.name + "'/><br>";
+                    else
+                        div.innerHTML = "<img  width='113' height='155' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
+                    output.insertBefore(div, null);
+                };
+
+                //Read the image
+                picReader.readAsDataURL(file);
+            }
+            
+        };
+       
+            
+
+        
+
+    </script>
+}
+<div id="thanhcong" class="alert alert-success" style="display: none;">Success</div>
+<div id="thatbai" class="alert alert-danger" style="display: none;">Failure</div>
+<div id="tuchoi" class="alert alert-danger" style="display: none;">Access is denied</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-10">
+            <div class="col-md-6">
+                <input id="search" class="form-control" type="text" style="border-radius:4px" />
+            </div>
+            <div class="col-md-6">
+                <input id="search" class="form-control" type="checkbox" style="border-radius:4px" />
+            </div>
+        <div class="col-lg-4">
+            <button id="add" class="btn btn-glass btn-info">
+                <i class="fa fa-fw fa-lg fa-info "></i> Add
+            </button>
+        </div>
+    </div>
+</div>
+    </div>
+<table id="table" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <tr>
+        <th>Tên Sản Phẩm</th>
+        <th>Ảnh</th>
+        <th>Thông Tin</th>
+        <th>Thông Số</th>
+        <th>Dung Lượng</th>
+        <th>Giá</th>
+        <th>Số Lượng</th>
+        <th>Sale</th>
+        <th>Tình Trạng</th>
+        <th>Trạng Thái</th>
+        <th>Ation</th>
+    </tr>
+    <tbody id="tbldata"></tbody>
+</table>
+<div id="pagination-demo" class="pagination-sm"></div>
+<input id="idsp" type="text" class="hidden" />
+
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h3 class="modal-title">Delete Employee</h3>
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ? You want to delete this. </h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="150" />
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-success btn-confirm">Confirm</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@*hidden field for storing current employeeId*@
+
+
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Book Form</h3>
+                <div style="text-align:center;display:none" id="addload">
+
+                    
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="100" />
+
+                </div>
+            </div>
+            
+            <div class="modal-body form">
+                <form id="formadd" method="post" class="form-horizontal">
+                    <input type="hidden" value="" name="book_id" />
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tên</label>
+                            <div class="col-md-9">
+                                <input id="ten1" style="border-radius:4px" name="tensp" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Loại</label>
+                            <div class="col-md-4">
+                                <select style="border-radius:4px" id="loai" class="form-control">
+
+                                
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Hãng</label>
+                            <div class="col-md-4">
+                                <select style="border-radius:4px" id="hang" class="form-control">
+
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tình Trạng</label>
+                            <div class="col-md-9">
+                                <input id="tinhtrang" style="border-radius:4px" name="book_isbn" placeholder="" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Thông Tin</label>
+                            <div class="col-md-9">
+                                <textarea id="thongtin" style="border-radius: 4px" rows="5" class="form-control" name="info" placeholder="Enter password"> </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Thông Số</label>
+                            <div class="col-md-9">
+                                <textarea id="thongso" style="border-radius: 4px" rows="5" class="form-control" name="info" placeholder="Enter password"> </textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Số Lượng</label>
+                            <div class="col-md-9">
+                                <input min="0" id="soluong" style="border-radius:4px" name="book_category" placeholder="Book Category" class="form-control" type="number">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Màu sản phẩm</label>
+                            <div class="col-md-4">
+                                <select style="border-radius:4px" id="mau" class="form-control">
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Dung lượng sản phẩm</label>
+                            <div class="col-md-4">
+                                <select style="border-radius:4px" id="dungluong" name="dungluong" class="form-control">
+                                    <option value="8">8 GB</option>
+                                    <option value="16">16 GB</option>
+                                    <option value="32">32 GB</option>
+                                    <option value="64">64 GB</option>
+                                    <option value="128">128 GB</option>
+                                    <option value="256">256 GB</option>
+                                    <option value="512">512 GB</option>
+                                    <option value="1">1 TB</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Sale</label>
+                            <div class="col-md-4">
+                                <input min="0" id="sale" style="border-radius:4px" name="book_isbn" placeholder="Sale" class="form-control" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Giá</label>
+                            <div class="col-md-4">
+                                <input min="0" id="gia" style="border-radius:4px" name="book_isbn" placeholder="Sale" class="form-control" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="resultc">Ảnh Chính Sản Phẩm</label><br>
+                                <input id="anhchinh" style="border-radius:4px" type="file" name="file_upload" onchange="previewImage(this, 'result_anhsp', 1);" accept="image/*" />
+                                <br>
+                                <div style="display:none" id="loadchinh"></div>
+                                <output id="result_anhsp" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3" for="result">Ảnh Chi Tiết Thêm Sản Phẩm: <span id="soanhupload"></span></label><br>
+                                <input id="anhfull" style="border-radius:4px" type="file" name="file_upload[]" onchange="previewImage(this, 'result_anhsp2', 0);" accept="image/*" multiple />
+                                <br>
+                                <div style="display:none" id="loadfull"></div>
+                                <output id="result_anhsp2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ẩn/Hiện khỏi trang chủ</label>
+                            <div class="col-md-4">
+                                <select style="border-radius:4px" id="anhien" name="anhien" class="form-control">
+                                    <option value="1" selected>Hiện</option>
+                                    <option value="0">Ẩn</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" id="btnSave" class="btn btn-success btn-save">Save</button>
+                <button type="button" class="btn btn-danger btn-cancel" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_book" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Book Form</h3>
+                <div style="text-align:center;display:none" id="addload">
+
+
+                    <img src="~/Container/Adminimages/InternetSlowdown_Day.gif" width="100" />
+
+                </div>
+            </div>
+
+            <div class="modal-body form">
+                <form id="formadd" method="post" class="form-horizontal">
+                    <input type="hidden" value="" name="book_id" />
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Số Lượng</label>
+                            <div class="col-md-9">
+                                <input min="1" id="soluongdat" style="border-radius:4px" name="book_category" placeholder="Book Category" class="form-control" type="number">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tên</label>
+                            <div class="col-md-9">
+                                <input id="tenbook" style="border-radius:4px" name="tensp" class="form-control" type="text">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Họ</label>
+                            <div class="col-md-9">
+                                <textarea id="hobook" style="border-radius: 4px" rows="5" class="form-control" name="info" placeholder="Enter password"> </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">SDT</label>
+                            <div class="col-md-4">
+                                <input min="0" id="sdtbook" style="border-radius:4px" name="book_isbn" placeholder="Sale" class="form-control" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Địa Chỉ</label>
+                            <div class="col-md-9">
+                                <textarea id="diachibook" style="border-radius: 4px" rows="5" class="form-control" name="info" placeholder="Enter password"> </textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ghi Chú</label>
+                            <div class="col-md-9">
+                                <textarea id="ghichubook" style="border-radius: 4px" rows="5" class="form-control" name="info" placeholder="Enter password"> </textarea>
+
+                            </div>
+                        </div>
+                        
+                       
+                       
+                        
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnBooking" class="btn btn-success">Book</button>
+                <button name="btncancelbook" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+

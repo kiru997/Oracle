@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A Pen by  Zoltan Kohalmy</title>
+
+
+
+    <link href="~/Container/Admincss/stylelogin.css" rel="stylesheet" />
+
+    <script src="~/Container/AdminJS/jquery-3.2.1.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+</head>
+
+<body>
+
+    
+    <form id="form">
+        <header>Login</header>
+
+        <label>Username <span>*</span></label>
+        <input id="username" type="text" />
+        <div class="help">At leas 6 character</div>
+        <label>Password <span>*</span></label>
+        <input id="pass" type="Password" />
+        <div id="thatbai" class="alert alert-danger" style="display: none;text-align:center;">Wrong username or pass</div>
+        <button type="button" id="btnis">Login</button>
+    </form>
+
+
+
+</body>
+
+</html>
+<script>
+
+
+    
+    $(document).ready(function () {
+        $("#btnis").click(function () {
+            var user = $("#username").val();
+            var pass = $("#pass").val();
+            
+            $.ajax({
+                url: "IsAdmin",
+                type: "POST",
+                data: { user: user, pass: pass },
+                success: function (result) {
+                    if (!result.status) {
+                        $("#thatbai").show();
+                    };
+                    if(result.status)
+                    {
+                        
+                        window.location.href=result.Url;
+                    }
+
+
+                }
+
+
+
+            });
+        });
+
+    });
+    
+
+
+
+
+</script>
+

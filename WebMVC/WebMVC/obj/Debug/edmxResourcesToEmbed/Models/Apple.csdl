@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Donhang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="iduser" Type="Int32" />
+    <Property Name="idsp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="thanhtoan" Type="Int32" />
+    <Property Name="idship" Type="Int32" />
+    <Property Name="tongtien" Type="Int32" />
+    <Property Name="ngaydat" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="hang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hangsx" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="sanphams" Relationship="Self.FK_sanpham_hang" FromRole="hang" ToRole="sanpham" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loaisp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="sanphams" Relationship="Self.FK_sanpham_loai" FromRole="loai" ToRole="sanpham" />
+  </EntityType>
+  <EntityType Name="mau">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mausp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="sanphams" Relationship="Self.FK_sanpham_mau" FromRole="mau" ToRole="sanpham" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taikhoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="matkhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="anh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="resetpass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quyen" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tensp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="loai" Type="Int32" />
+    <Property Name="hang" Type="Int32" />
+    <Property Name="anhbia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="anhfull" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="thongtin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="thongso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mau" Type="Int32" />
+    <Property Name="dungluong" Type="Int32" />
+    <Property Name="gia" Type="Double" />
+    <Property Name="soluong" Type="Int32" />
+    <Property Name="soluongdat" Type="Int32" />
+    <Property Name="anhien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sale" Type="Int32" />
+    <Property Name="tinhtrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="hang1" Relationship="Self.FK_sanpham_hang" FromRole="sanpham" ToRole="hang" />
+    <NavigationProperty Name="loai1" Relationship="Self.FK_sanpham_loai" FromRole="sanpham" ToRole="loai" />
+    <NavigationProperty Name="mau1" Relationship="Self.FK_sanpham_mau" FromRole="sanpham" ToRole="mau" />
+  </EntityType>
+  <EntityType Name="ship">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_sanpham_hang">
+    <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hang">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="hang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_loai">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_mau">
+    <End Role="mau" Type="Self.mau" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mau">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="mau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Donhangs" EntityType="Self.Donhang" />
+    <EntitySet Name="hangs" EntityType="Self.hang" />
+    <EntitySet Name="loais" EntityType="Self.loai" />
+    <EntitySet Name="maus" EntityType="Self.mau" />
+    <EntitySet Name="members" EntityType="Self.member" />
+    <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+    <EntitySet Name="ships" EntityType="Self.ship" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_sanpham_hang" Association="Self.FK_sanpham_hang">
+      <End Role="hang" EntitySet="hangs" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_loai" Association="Self.FK_sanpham_loai">
+      <End Role="loai" EntitySet="loais" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_mau" Association="Self.FK_sanpham_mau">
+      <End Role="mau" EntitySet="maus" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

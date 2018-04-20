@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUSER" Type="number" Precision="10" Scale="0" />
+    <Property Name="IDSP" Type="varchar2" MaxLength="2000" />
+    <Property Name="TONGTIEN" Type="number" Precision="20" Scale="0" />
+    <Property Name="STASTUS" Type="number" Precision="10" Scale="0" />
+    <Property Name="IDSHIP" Type="number" Precision="18" Scale="0" />
+    <Property Name="NGAYDAT" Type="date" />
+    <Property Name="THANHTOAN" Type="number" Precision="3" Scale="0" />
+  </EntityType>
+  <EntityType Name="HANG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HANGSX" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LOAI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOAISP" Type="nvarchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MAU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAUSP" Type="nvarchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MEMBER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TAIKHOAN" Type="varchar2" MaxLength="2000" />
+    <Property Name="MATKHAU" Type="varchar2" MaxLength="2000" />
+    <Property Name="TEN" Type="varchar2" MaxLength="2000" />
+    <Property Name="SDT" Type="varchar2" MaxLength="2000" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="2000" />
+    <Property Name="ANH" Type="varchar2" MaxLength="2000" />
+    <Property Name="RESETPASS" Type="varchar2" MaxLength="2000" />
+    <Property Name="QUYEN" Type="number" Precision="3" Scale="0" />
+    <Property Name="ID" Type="number" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATUS" Type="number" Precision="3" Scale="0" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENSP" Type="nvarchar2" MaxLength="1000" />
+    <Property Name="LOAI" Type="number" Precision="10" Scale="0" />
+    <Property Name="HANG" Type="number" Precision="10" Scale="0" />
+    <Property Name="ANHBIA" Type="varchar2" MaxLength="2000" />
+    <Property Name="ANHFULL" Type="varchar2" MaxLength="2000" />
+    <Property Name="THONGTIN" Type="varchar2" MaxLength="2000" />
+    <Property Name="THONGSO" Type="varchar2" MaxLength="2000" />
+    <Property Name="MAU" Type="number" Precision="38" Scale="0" />
+    <Property Name="DUNGLUONG" Type="number" Precision="38" Scale="0" />
+    <Property Name="GIA" Type="number" Precision="38" Scale="0" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" />
+    <Property Name="SOLUONGDAT" Type="number" Precision="38" Scale="0" />
+    <Property Name="ANHIEN" Type="number" Precision="38" Scale="0" />
+    <Property Name="SALE" Type="number" Precision="38" Scale="0" />
+    <Property Name="TINHTRANG" Type="varchar2" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="SHIP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="2000" />
+    <Property Name="LASTNAME" Type="varchar2" MaxLength="2000" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="2000" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="2000" />
+    <Property Name="NOTES" Type="varchar2" MaxLength="2000" />
+  </EntityType>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="HANG" EntityType="Self.HANG" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="LOAI" EntityType="Self.LOAI" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="MAU" EntityType="Self.MAU" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="HR" store:Type="Tables" />
+    <EntitySet Name="SHIP" EntityType="Self.SHIP" Schema="HR" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

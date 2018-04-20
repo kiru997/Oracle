@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Donhang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="iduser" Type="int" />
+    <Property Name="idsp" Type="nvarchar(max)" />
+    <Property Name="status" Type="int" />
+    <Property Name="thanhtoan" Type="int" />
+    <Property Name="idship" Type="int" />
+    <Property Name="tongtien" Type="int" />
+    <Property Name="ngaydat" Type="date" />
+  </EntityType>
+  <EntityType Name="hang">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hangsx" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loaisp" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="mau">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mausp" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taikhoan" Type="nvarchar(max)" />
+    <Property Name="matkhau" Type="nvarchar(max)" />
+    <Property Name="ten" Type="nvarchar(max)" />
+    <Property Name="sdt" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="anh" Type="nvarchar(max)" />
+    <Property Name="resetpass" Type="nvarchar" MaxLength="50" />
+    <Property Name="quyen" Type="int" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tensp" Type="nvarchar(max)" />
+    <Property Name="loai" Type="int" />
+    <Property Name="hang" Type="int" />
+    <Property Name="anhbia" Type="nvarchar(max)" />
+    <Property Name="anhfull" Type="nvarchar(max)" />
+    <Property Name="thongtin" Type="nvarchar(max)" />
+    <Property Name="thongso" Type="nvarchar(max)" />
+    <Property Name="mau" Type="nvarchar(max)" />
+    <Property Name="dungluong" Type="int" />
+    <Property Name="gia" Type="float" />
+    <Property Name="soluong" Type="int" />
+    <Property Name="soluongdat" Type="int" />
+    <Property Name="anhien" Type="nvarchar(max)" />
+    <Property Name="sale" Type="int" />
+    <Property Name="tinhtrang" Type="int" />
+  </EntityType>
+  <EntityType Name="ship">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="notes" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nchar" MaxLength="10" />
+    <Property Name="address" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_sanpham_hang">
+    <End Role="hang" Type="Self.hang" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hang">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="hang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_loai">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppleModelStoreContainer">
+    <EntitySet Name="Donhang" EntityType="Self.Donhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hang" EntityType="Self.hang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loai" EntityType="Self.loai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mau" EntityType="Self.mau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ship" EntityType="Self.ship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_sanpham_hang" Association="Self.FK_sanpham_hang">
+      <End Role="hang" EntitySet="hang" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_loai" Association="Self.FK_sanpham_loai">
+      <End Role="loai" EntitySet="loai" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
